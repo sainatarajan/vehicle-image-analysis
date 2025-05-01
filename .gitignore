@@ -63,9 +63,6 @@ venv.bak/
 logs/
 *.log
 debug/
-*.jpg
-*.jpeg
-*.png
 *.gif
 *.csv
 *.pt
