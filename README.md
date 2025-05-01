@@ -21,7 +21,7 @@ A RESTful API built with Python and FastAPI for analyzing images, specifically d
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/image-analysis-api.git
+git clone https://github.com/sainatarajan/vehicle-image-analysis.git
 cd image-analysis-api
 
 # Install dependencies with Poetry
@@ -35,7 +35,7 @@ poetry run python -c "import torch; print(f'CUDA available: {torch.cuda.is_avail
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/image-analysis-api.git
+git clone https://github.com/sainatarajan/vehicle-image-analysis.git
 cd image-analysis-api
 
 # Create a virtual environment
