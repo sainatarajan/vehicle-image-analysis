@@ -93,9 +93,9 @@ Full JSON response:
 
 ```json
 {
-  "total_cars": 2,
+  "total_cars": 1,
   "red_cars": 1,
-  "description": "A red car and a blue car parked on the street."
+  "description": "A red sports car parked on a white background."
 }
 ```
 
