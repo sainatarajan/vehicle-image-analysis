@@ -132,12 +132,7 @@ The project follows SOLID principles and is organized into several modules:
 
 ### Color Detection
 
-The system uses HSV (Hue, Saturation, Value) color space for detecting red cars, which provides several advantages over RGB:
-
-- Better separation of color from brightness and saturation
-- More intuitive color ranges
-- Better handling of lighting variations
-- Easier detection of specific colors like red
+The system uses HSV (Hue, Saturation, Value) color space for detecting red cars, which provides several advantages over RGB.
 
 ## Debugging
 
