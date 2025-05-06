@@ -1,12 +1,12 @@
 # Image Analysis API
 
-A RESTful API built with Python and FastAPI for analyzing images, specifically designed to detect vehicles, identify car colors, and generate descriptive captions.
+A RESTful API built with Python and FastAPI for analyzing images, specifically designed to detect red cars, and generate descriptive captions.
 
 ## Features
 
-- **Vehicle Detection**: Uses DETR (DEtection TRansformer) model to identify cars in images
-- **Color Analysis**: Detects red vehicles using HSV color space analysis
-- **Image Captioning**: Generates descriptive captions for images using a transformer-based model
+- **Vehicle Detection**: Uses DETR (DEtection TRansformer) model to detect cars in images
+- **Color Analysis**: Counts the number of red cars using HSV color space analysis
+- **Image Captioning**: Generates descriptive captions for images using a ViT-GPT2 model
 - **Scalable Architecture**: Designed with OOP and SOLID principles for maintainability and scalability
 - **Comprehensive Logging**: Detailed logs and debug visualizations for troubleshooting
 
@@ -77,7 +77,7 @@ The server will start on http://0.0.0.0:8000 by default.
 curl -X POST \
   http://localhost:8000/analyze-image \
   -H "Content-Type: multipart/form-data" \
-  -F "file=@./images/your_car_image.jpg"
+  -F "file=@./images/1.jpg"
 ```
 
 ### Sample Request using Python

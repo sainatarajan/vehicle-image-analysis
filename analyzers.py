@@ -11,7 +11,7 @@ from utils import is_red_vehicle
 
 
 class DefaultImageAnalyzer(ImageAnalyzer):
-    """Default implementation of ImageAnalyzer that orchestrates detection and captioning."""
+    """An implementation of ImageAnalyzer that orchestrates detection and captioning."""
     
     def __init__(self, vehicle_detector: VehicleDetector, caption_generator: CaptionGenerator):
         """
@@ -38,7 +38,7 @@ class DefaultImageAnalyzer(ImageAnalyzer):
         try:
             logger.info("Starting image analysis")
             
-            # Convert PIL Image to numpy array - NOTE: PIL images are RGB by default
+            # Convert PIL Image to numpy array. PIL images are RGB by default
             image_np = np.array(image)
             
             # If the image has an alpha channel, remove it
