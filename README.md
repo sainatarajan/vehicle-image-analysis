@@ -104,10 +104,10 @@ Full JSON response:
 Below is a visual demonstration of how the API processes an image of a car:
 
 ### Input Car Image
-![Input Car Image](docs/images/input_car.jpg)
+![Input Car Image](images/1.jpg)
 
 ### Red Car Mask (HSV Color Detection)
-![Red Car Mask](docs/images/red_car_mask.jpg)
+![Red Car Mask](debug/vehicle_0_red_mask.jpg)
 
 ### API Response (JSON)
 ```json
