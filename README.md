@@ -17,8 +17,6 @@ A RESTful API built with Python and FastAPI for analyzing images, specifically d
 
 ## Installation
 
-### Using Poetry (Recommended)
-
 ```bash
 # Clone the repository
 git clone https://github.com/sainatarajan/vehicle-image-analysis.git
@@ -29,24 +27,6 @@ poetry install
 
 # Verify CUDA installation (optional)
 poetry run python -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}')"
-```
-
-### Using pip
-
-```bash
-# Clone the repository
-git clone https://github.com/sainatarajan/vehicle-image-analysis.git
-cd image-analysis-api
-
-# Create a virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install PyTorch with CUDA support
-pip install torch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 --index-url https://download.pytorch.org/whl/cu121
-
-# Install other dependencies
-pip install -r requirements.txt
 ```
 
 ## Running the API
@@ -71,34 +51,42 @@ The server will start on http://0.0.0.0:8000 by default.
 - **Content-Type**: multipart/form-data
 - **Form Key**: `file` (an image file)
 
-### Sample Request using curl
 
-```bash
-curl -X POST \
-  http://localhost:8000/analyze-image \
-  -H "Content-Type: multipart/form-data" \
-  -F "file=@./images/1.jpg"
-```
 
 ### Sample Request using Python
 
-```python
-import requests
+The repository includes a `send_request.py` script that can be used to easily test the API:
 
-def analyze_image(image_path, api_url="http://localhost:8000/analyze-image"):
-    with open(image_path, 'rb') as image_file:
-        files = {'file': (image_file.name, image_file, 'image/jpeg')}
-        response = requests.post(api_url, files=files)
-        
-    if response.status_code == 200:
-        return response.json()
-    else:
-        print(f"Error: {response.status_code}")
-        print(response.text)
-        return None
+```bash
+# Install requests library if needed
+pip install requests
 
-result = analyze_image("./images/car.jpg")
-print(result)
+# Run with a specific image
+python send_request.py ./images/car.jpg
+
+# Or run without arguments to analyze the first image in the ./images directory
+python send_request.py
+```
+
+The script will output:
+1. The API request details
+2. A summary of results (total cars, red cars, description)
+3. The complete JSON response
+
+Example output:
+```
+Sending ./images/red_car.jpg to http://localhost:8000/analyze-image...
+Analysis successful!
+Total cars: 1
+Red cars: 1
+Description: A red sports car parked on a white background.
+
+Full JSON response:
+{
+  "total_cars": 1,
+  "red_cars": 1,
+  "description": "A red sports car parked on a white background."
+}
 ```
 
 ### Sample Response
@@ -108,6 +96,25 @@ print(result)
   "total_cars": 2,
   "red_cars": 1,
   "description": "A red car and a blue car parked on the street."
+}
+```
+
+## Example Results
+
+Below is a visual demonstration of how the API processes an image of a car:
+
+### Input Car Image
+![Input Car Image](docs/images/input_car.jpg)
+
+### Red Car Mask (HSV Color Detection)
+![Red Car Mask](docs/images/red_car_mask.jpg)
+
+### API Response (JSON)
+```json
+{
+  "total_cars": 1,
+  "red_cars": 1,
+  "description": "A shiny red sports car with alloy wheels."
 }
 ```
 
@@ -142,20 +149,7 @@ When processing images, the API generates debug visualizations in the `debug` di
 
 These debug images can help troubleshoot issues with color detection or model performance.
 
-## Scaling for Production
 
-For high-load production environments, consider:
-
-1. Running multiple worker processes with Gunicorn:
-```bash
-gunicorn main:app -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000
-```
-
-2. Using optimized inference servers like TorchServe or Triton Inference Server
-
-3. Implementing non-blocking inference patterns using asyncio.to_thread
-
-4. Model optimization techniques like quantization or TensorRT/ONNX conversion
 
 ## License
 

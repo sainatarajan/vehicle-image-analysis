@@ -62,7 +62,7 @@ venv.bak/
 # Project specific
 logs/
 *.log
-debug/
+# debug/
 *.gif
 *.csv
 *.pt
