@@ -148,4 +148,4 @@ These debug images can help troubleshoot issues with color detection or model pe
 
 ## License
 
-[MIT License](LICENSE)
+[MIT License](LICENSE.md)
