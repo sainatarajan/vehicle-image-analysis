@@ -62,7 +62,7 @@ The repository includes a `send_request.py` script that can be used to easily te
 pip install requests
 
 # Run with a specific image
-python send_request.py ./images/car.jpg
+python send_request.py ./images/1.jpg
 
 # Or run without arguments to analyze the first image in the ./images directory
 python send_request.py
@@ -75,7 +75,7 @@ The script will output:
 
 Example output:
 ```
-Sending ./images/red_car.jpg to http://localhost:8000/analyze-image...
+Sending ./images/1.jpg to http://localhost:8000/analyze-image...
 Analysis successful!
 Total cars: 1
 Red cars: 1
